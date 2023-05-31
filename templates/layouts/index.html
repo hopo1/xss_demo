@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="row text-center">
+        <h1>Write your name</h1>
+        <input type="text" id="in1">
+    </div>
+    <br/><br/>
+    <div class="row text-center">
+        <button class="btn btn-primary" id="localSave">Save locally</button>
+        <button class="btn btn-primary" id="globalSave">Save permanently</button>
+    </div>
+    <div class="text-center">
+        <h2>Global saves</h2>
+        {% for item in data %}
+            <p> {{ item |safe }} </p>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        <h2>Local saves</h2>
+        <ul id="names">
+        </ul>
+    </div>
+    <div class="text-center">
+        <h2>Name from url</h2>
+        {{ request.args.get('name')|safe }}
+    </div>
+    <div>
+        test
+        <div id="tst"></div>
+    </div>
+{% endblock %}
